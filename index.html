@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive viewer for Android Accessibility Scanner reports">
+    <meta name="author" content="Accessibility Scanner Viewer">
+    <title>Accessibility Scanner Viewer</title>
+    
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Folder Selector Section -->
+        <div class="folder-selector" id="folderSelector">
+            <h2>🔍 Select Accessibility Scanner Folder</h2>
+            <p>Choose the unzipped folder containing your accessibility report files</p>
+            <div>
+                <input type="file" id="folderInput" webkitdirectory directory multiple aria-label="Select folder">
+                <button class="btn-primary" onclick="document.getElementById('folderInput').click()" aria-label="Open folder selector">
+                    📁 Select Folder
+                </button>
+            </div>
+            <div class="folder-info" id="folderInfo" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- Viewer Content Section -->
+        <div class="viewer-content" id="viewerContent">
+            <!-- Header -->
+            <header class="header">
+                <div>
+                    <h1 id="folderName">Accessibility Issues</h1>
+                    <button class="btn-secondary" onclick="APP.changeFolder()" aria-label="Change selected folder">
+                        Change Folder
+                    </button>
+                </div>
+                <nav class="navigation" aria-label="Screen navigation">
+                    <button class="nav-btn" id="prevBtn" onclick="APP.navigateScreen(-1)" aria-label="Previous screen">
+                        ◀ Previous
+                    </button>
+                    <span class="screen-info" id="screenInfo" aria-live="polite">Screen 1 of 0</span>
+                    <button class="nav-btn" id="nextBtn" onclick="APP.navigateScreen(1)" aria-label="Next screen">
+                        Next ▶
+                    </button>
+                </nav>
+            </header>
+        
+            <!-- Main Content Area -->
+            <main class="content">
+                <!-- Screenshot Panel -->
+                <section class="screenshot-panel" id="screenshotPanel" aria-label="Screenshot with issue overlays">
+                    <div class="loading" role="status">Select a folder to begin</div>
+                </section>
+                
+                <!-- Issues Panel -->
+                <aside class="issues-panel" aria-label="Accessibility suggestions">
+                    <div class="issues-header">
+                        <h2>Suggestions</h2>
+                        <div class="suggestion-count" id="suggestionCount" aria-live="polite">0 suggestions</div>
+                    </div>
+                    <div class="issue-list" id="issueList" role="list"></div>
+                </aside>
+            </main>
+
+            <!-- Thumbnail Strip -->
+            <nav class="thumbnail-strip" id="thumbnailStrip" aria-label="Screen thumbnails"></nav>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>

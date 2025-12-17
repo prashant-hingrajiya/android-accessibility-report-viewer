@@ -1,0 +1,379 @@
+/* =====================================================
+   Accessibility Scanner Viewer - Styles
+   ===================================================== */
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    background: #f5f5f5;
+    padding: 20px;
+}
+
+/* Container */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* =====================================================
+   Folder Selector
+   ===================================================== */
+.folder-selector {
+    padding: 40px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.folder-selector h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+.folder-selector p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 24px;
+}
+
+#folderInput {
+    display: none;
+}
+
+.folder-info {
+    margin-top: 16px;
+    font-size: 14px;
+    color: #666;
+}
+
+/* =====================================================
+   Buttons
+   ===================================================== */
+.btn-primary {
+    padding: 12px 24px;
+    background: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background: #1565c0;
+}
+
+.btn-secondary {
+    padding: 6px 12px;
+    background: #666;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-left: 12px;
+    transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+    background: #555;
+}
+
+.nav-btn {
+    padding: 8px 16px;
+    background: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.nav-btn:hover:not(:disabled) {
+    background: #1565c0;
+}
+
+.nav-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* =====================================================
+   Header
+   ===================================================== */
+.header {
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.navigation {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.screen-info {
+    font-size: 16px;
+    color: #666;
+    font-weight: 500;
+}
+
+/* =====================================================
+   Content Area
+   ===================================================== */
+.viewer-content {
+    display: none;
+}
+
+.viewer-content.active {
+    display: block;
+}
+
+.content {
+    display: flex;
+    height: calc(100vh - 260px);
+}
+
+/* =====================================================
+   Screenshot Panel
+   ===================================================== */
+.screenshot-panel {
+    flex: 1;
+    position: relative;
+    overflow: auto;
+    padding: 20px;
+    background: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.screenshot-wrapper {
+    position: relative;
+    display: inline-block;
+    max-height: 100%;
+}
+
+.screenshot {
+    max-width: 100%;
+    max-height: calc(100vh - 280px);
+    height: auto;
+    display: block;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.highlight-overlay {
+    position: absolute;
+    border: 3px solid #ff6f00;
+    border-radius: 4px;
+    cursor: pointer;
+    pointer-events: all;
+    box-sizing: border-box;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 18px;
+    color: #666;
+}
+
+/* =====================================================
+   Issues Panel
+   ===================================================== */
+.issues-panel {
+    width: 400px;
+    border-left: 1px solid #e0e0e0;
+    overflow-y: auto;
+    background: white;
+}
+
+.issues-header {
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 10;
+}
+
+.issues-header h2 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.suggestion-count {
+    font-size: 14px;
+    color: #666;
+}
+
+.issue-list {
+    padding: 10px;
+}
+
+.issue-item {
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.issue-item:hover {
+    border-color: #ff6f00;
+    background: #fff8e1;
+}
+
+.issue-item.selected {
+    border-color: #ff6f00;
+    background: #fff8e1;
+    box-shadow: 0 2px 8px rgba(255, 111, 0, 0.3);
+}
+
+.issue-item.no-bounds::after {
+    content: "📍 No location";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 10px;
+    color: #999;
+    background: #f5f5f5;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+.issue-type {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.issue-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.issue-resource-id {
+    font-size: 12px;
+    color: #1976d2;
+    margin-bottom: 8px;
+    font-family: monospace;
+    word-break: break-all;
+}
+
+.issue-description {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+.issue-bounds {
+    display: inline-block;
+    background: #f5f5f5;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 11px;
+    margin-top: 4px;
+    color: #666;
+}
+
+/* =====================================================
+   Thumbnail Strip
+   ===================================================== */
+.thumbnail-strip {
+    display: flex;
+    gap: 10px;
+    padding: 15px 20px;
+    overflow-x: auto;
+    border-top: 1px solid #e0e0e0;
+    background: #fafafa;
+    min-height: 140px;
+    max-height: 140px;
+    align-items: center;
+}
+
+.thumbnail-strip::-webkit-scrollbar {
+    height: 8px;
+}
+
+.thumbnail-strip::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.thumbnail-strip::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.thumbnail-strip::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.thumbnail {
+    width: 60px;
+    height: 106px;
+    object-fit: cover;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.thumbnail:hover {
+    border-color: #1976d2;
+    transform: scale(1.05);
+}
+
+.thumbnail.active {
+    border-color: #ff6f00;
+    box-shadow: 0 2px 8px rgba(255, 111, 0, 0.5);
+    transform: scale(1.1);
+}
+
+/* =====================================================
+   Messages
+   ===================================================== */
+.message-success {
+    color: #2e7d32;
+}
+
+.message-error {
+    color: #d32f2f;
+}
